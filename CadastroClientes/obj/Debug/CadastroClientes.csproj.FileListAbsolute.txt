@@ -1,0 +1,11 @@
+C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\bin\Debug\CadastroClientes.exe.config
+C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\bin\Debug\CadastroClientes.exe
+C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\bin\Debug\CadastroClientes.pdb
+C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\obj\Debug\CadastroClientes.csproj.AssemblyReference.cache
+C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\obj\Debug\CadastroClientes.csproj.SuggestedBindingRedirects.cache
+C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\obj\Debug\CadastroClientes.Properties.Resources.resources
+C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\obj\Debug\CadastroClientes.csproj.GenerateResource.cache
+C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\obj\Debug\CadastroClientes.csproj.CoreCompileInputs.cache
+C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\obj\Debug\CadastroClientes.exe
+C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\obj\Debug\CadastroClientes.pdb
+C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\obj\Debug\CadastroClientes.view.CadastroClienteView.resources
