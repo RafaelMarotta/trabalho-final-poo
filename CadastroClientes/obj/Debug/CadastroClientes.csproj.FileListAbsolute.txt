@@ -9,3 +9,4 @@ C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes
 C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\obj\Debug\CadastroClientes.exe
 C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\obj\Debug\CadastroClientes.pdb
 C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\obj\Debug\CadastroClientes.view.CadastroClienteView.resources
+C:\Users\rafae\OneDrive\Área de Trabalho\puc\POO\TrabalhoFinal\CadastroClientes\CadastroClientes\obj\Debug\CadastroClientes.view.ListagemClientesView.resources

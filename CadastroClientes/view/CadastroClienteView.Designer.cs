@@ -79,7 +79,7 @@
             this.txtTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefone.Location = new System.Drawing.Point(297, 159);
             this.txtTelefone.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTelefone.Mask = "(99) 0000-0000";
+            this.txtTelefone.Mask = "(99) 00000-0000";
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(227, 27);
             this.txtTelefone.TabIndex = 11;
@@ -156,6 +156,7 @@
             this.btnVoltar.TabIndex = 22;
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // btnRemover
             // 

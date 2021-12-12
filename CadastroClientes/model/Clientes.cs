@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CadastroClientes.exceptions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,34 +12,44 @@ namespace CadastroClientes.model
     {
         public List<Cliente> clientes = new List<Cliente>();
         static XmlSerializer serializer = new XmlSerializer(typeof(Cliente));
-        public static void SalvarCliente(Cliente cliente)
+        public static void SalvarCliente(Cliente cliente, bool edicao)
         {
             Clientes clientes = ObterClientes();
+            Cliente clienteCpf = clientes.clientes.Find(e => e.cpf == cliente.cpf);
+            if (edicao)
+            {
+                clientes.clientes.Remove(clienteCpf);
+            }
+            else
+            {
+                if (clienteCpf != null)
+                {
+                    throw new ClienteInvalidoException("Já existe um cliente com esse CPF cadastrado!");
+                }
+            }
+            
             clientes.clientes.Add(cliente);
             SalvarClientes(clientes);
         }
         public static Clientes ObterClientes()
         {
-            StreamReader file = ObterStreamReader();
             try
             {
                 XmlSerializer reader = new XmlSerializer(typeof(Clientes));
-                Clientes clientes = (Clientes)reader.Deserialize(file);
-                return clientes;
+                using (StringReader sr = new StringReader(File.ReadAllText(ObterPath())))
+                {
+                    return (Clientes)reader.Deserialize(sr);
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
                 return new Clientes();
             }
-            finally
-            {
-                file.Close();
-            }
         }
-        public static Cliente BuscaClienteCpf(string cpf)
+        public static Cliente ObterClienteCpf(string cpf)
         {
-            return null;
+            return ObterClientes().clientes.Find(e => e.cpf == cpf);
         }
         public static void RemoverCliente(string cpf)
         {
@@ -63,14 +74,15 @@ namespace CadastroClientes.model
                 fileStream.Close();
             }
         }
-        private static StreamReader ObterStreamReader()
-        {
-            return new StreamReader(ObterFileStream());
-        }
+
         private static FileStream ObterFileStream()
         {
-            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//Clientes01.xml";
+            var path = ObterPath();
             return File.Create(path);
+        }
+        private static string ObterPath()
+        {
+            return Directory.GetCurrentDirectory() + @"\clientes.xml";
         }
     }
 }

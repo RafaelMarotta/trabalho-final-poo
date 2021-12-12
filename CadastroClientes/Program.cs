@@ -14,7 +14,7 @@ namespace CadastroClientes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CadastroClienteView());
+            Application.Run(new ListagemClientesView());
         }
     }
 }
