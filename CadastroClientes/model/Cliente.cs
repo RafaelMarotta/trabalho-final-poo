@@ -4,10 +4,10 @@ namespace CadastroClientes.model
 {
     public class Cliente
     {
-        public string nome { get; set; }
-        public string email { get; set; }
-        public string cpf { get; set; }
-        public string telefone { get; set; }
-        public DateTime dataNascimento { get; set; }
+        public string Nome { get; set; }
+        public string Email { get; set; }
+        public string Cpf { get; set; }
+        public string Telefone { get; set; }
+        public DateTime DataNascimento { get; set; }
     }
 }

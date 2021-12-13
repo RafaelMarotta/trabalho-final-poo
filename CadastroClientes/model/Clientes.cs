@@ -2,23 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace CadastroClientes.model
 {
     public class Clientes
     {
-        public List<Cliente> clientes = new List<Cliente>();
-        static XmlSerializer serializer = new XmlSerializer(typeof(Cliente));
+        public List<Cliente> Itens = new List<Cliente>();
         public static void SalvarCliente(Cliente cliente, bool edicao)
         {
             Clientes clientes = ObterClientes();
-            Cliente clienteCpf = clientes.clientes.Find(e => e.cpf == cliente.cpf);
+            Cliente clienteCpf = clientes.Itens.Find(e => e.Cpf == cliente.Cpf);
             if (edicao)
             {
-                clientes.clientes.Remove(clienteCpf);
+                clientes.Itens.Remove(clienteCpf);
             }
             else
             {
@@ -28,7 +25,7 @@ namespace CadastroClientes.model
                 }
             }
             
-            clientes.clientes.Add(cliente);
+            clientes.Itens.Add(cliente);
             SalvarClientes(clientes);
         }
         public static Clientes ObterClientes()
@@ -49,12 +46,12 @@ namespace CadastroClientes.model
         }
         public static Cliente ObterClienteCpf(string cpf)
         {
-            return ObterClientes().clientes.Find(e => e.cpf == cpf);
+            return ObterClientes().Itens.Find(e => e.Cpf == cpf);
         }
         public static void RemoverCliente(string cpf)
         {
             Clientes clientes = ObterClientes();
-            clientes.clientes.RemoveAll(e => e.cpf == cpf);
+            clientes.Itens.RemoveAll(e => e.Cpf == cpf);
             SalvarClientes(clientes);
         }
         private static void SalvarClientes(Clientes clientes)
@@ -82,7 +79,7 @@ namespace CadastroClientes.model
         }
         private static string ObterPath()
         {
-            return Directory.GetCurrentDirectory() + @"\clientes.xml";
+            return Directory.GetCurrentDirectory() + @"\Clientes.xml";
         }
     }
 }

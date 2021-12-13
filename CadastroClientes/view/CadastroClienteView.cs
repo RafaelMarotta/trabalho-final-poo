@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CadastroClientes.controller;
 using CadastroClientes.exceptions;
@@ -15,35 +8,28 @@ namespace CadastroClientes.view
 {
     public partial class CadastroClienteView : Form
     {
-        private CadastroClienteController controller;
-        private Form lastView;
-        private bool edicao = false;
+        private CadastroClienteController Controller;
         public CadastroClienteView(Form lastView)
         {
             InitializeComponent();
-            this.lastView = lastView;
-            this.controller = new CadastroClienteController();
+            this.Controller = new CadastroClienteController(this, lastView, false);
         }
-
         public CadastroClienteView(Form lastView, Cliente cliente)
         {
             InitializeComponent();
-            this.lastView = lastView;
-            controller = new CadastroClienteController();
-            edicao = true;
-            txtNome.Text = cliente.nome;
-            txtEmail.Text = cliente.email;
-            txtCpf.Text = cliente.cpf;
+            Controller = new CadastroClienteController(this, lastView, true);
+            txtNome.Text = cliente.Nome;
+            txtEmail.Text = cliente.Email;
+            txtCpf.Text = cliente.Cpf;
             txtCpf.Enabled = false;
-            txtDataNascimento.Text = cliente.dataNascimento.ToString("dd/MM/yyyy");
-            txtTelefone.Text = cliente.telefone;
+            txtDataNascimento.Text = cliente.DataNascimento.ToString("dd/MM/yyyy");
+            txtTelefone.Text = cliente.Telefone;
         }
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
             {
-                controller.Salvar(txtCpf.Text, txtNome.Text, txtEmail.Text, txtDataNascimento.Text, txtTelefone.Text, edicao);
+                Controller.Salvar(txtCpf.Text, txtNome.Text, txtEmail.Text, txtDataNascimento.Text, txtTelefone.Text);
                 MessageBox.Show("Cliente salvo com sucesso!");
             } 
             catch (ClienteInvalidoException ex)
@@ -51,16 +37,14 @@ namespace CadastroClientes.view
                 MessageBox.Show(ex.Mensagem);
             }
         }
-
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            controller.Remover(txtCpf.Text);
+            Controller.Remover(txtCpf.Text);
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            lastView.Show();
-            Close();
+            Controller.Voltar();
         }
     }
 }

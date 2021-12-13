@@ -1,30 +1,52 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Windows.Forms;
 using CadastroClientes.exceptions;
 using CadastroClientes.model;
+using CadastroClientes.view;
 
 namespace CadastroClientes.controller
 {
     internal class CadastroClienteController
     {
-        private EmailAddressAttribute emailValidator = new EmailAddressAttribute();
-        public void Salvar(string cpf, string nome, string email, string dataNascimento, string telefone, bool edicao)
+        private EmailAddressAttribute EmailValidator;
+        private Form View;
+        private Form LastView;
+        private bool Edicao;
+        public CadastroClienteController(Form view, Form lastView, bool edicao)
+        {
+            EmailValidator = new EmailAddressAttribute();
+            View = view;
+            LastView = lastView;
+            Edicao = edicao;
+        }
+        public void Salvar(string cpf, string nome, string email, string dataNascimento, string telefone)
         {
             ValidaCliente(cpf, nome, email, dataNascimento, telefone);
             Cliente cliente = new Cliente();
-            cliente.nome = nome;
-            cliente.email = email;
-            cliente.dataNascimento = DateTime.Parse(dataNascimento);
-            cliente.telefone = telefone;
-            cliente.cpf = cpf;
-            Clientes.SalvarCliente(cliente, edicao);
+            cliente.Nome = nome;
+            cliente.Email = email;
+            cliente.DataNascimento = DateTime.Parse(dataNascimento);
+            cliente.Telefone = telefone;
+            cliente.Cpf = cpf;
+            Clientes.SalvarCliente(cliente, Edicao);
+            if (!Edicao)
+            {
+                new CadastroClienteView(LastView, cliente).Show();
+                View.Close();
+            }
         }
-
         public void Remover(String cpf)
         {
             Clientes.RemoverCliente(cpf);
+            MessageBox.Show("Cliente removido com sucesso!");
+            Voltar();
         }
-
+        public void Voltar()
+        {
+            LastView.Show();
+            View.Close();
+        }
         private void ValidaCliente(string cpf, string nome, string email, string dataNascimento, string telefone)
         {
             if (cpf.Length != 14)
@@ -35,7 +57,7 @@ namespace CadastroClientes.controller
             {
                 throw new ClienteInvalidoException("Favor informar um nome válido!");
             }
-            if (!emailValidator.IsValid(email))
+            if (!EmailValidator.IsValid(email))
             {
                 throw new ClienteInvalidoException("Favor informar um e-mail válido!");
             }

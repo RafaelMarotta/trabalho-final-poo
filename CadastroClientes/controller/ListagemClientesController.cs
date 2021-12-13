@@ -1,9 +1,7 @@
 ﻿using CadastroClientes.exceptions;
 using CadastroClientes.model;
 using CadastroClientes.view;
-using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Windows.Forms;
 
 namespace CadastroClientes.controller
@@ -12,7 +10,7 @@ namespace CadastroClientes.controller
     {
         public List<Cliente> ObterClientes()
         {
-            return Clientes.ObterClientes().clientes;
+            return Clientes.ObterClientes().Itens;
         }
 
         public void AdicionarNovoCliente(ListagemClientesView view)
@@ -36,7 +34,7 @@ namespace CadastroClientes.controller
             for(int i = 0; i < quantidadeClientes; i++)
             {
                 Cliente cliente = (Cliente)dataGridView.SelectedRows[i].DataBoundItem;
-                Clientes.RemoverCliente(cliente.cpf);
+                Clientes.RemoverCliente(cliente.Cpf);
             }
             view.ReloadDataGridView();
             return quantidadeClientes;

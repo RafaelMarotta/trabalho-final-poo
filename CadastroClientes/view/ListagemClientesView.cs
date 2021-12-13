@@ -1,21 +1,13 @@
 ﻿using CadastroClientes.controller;
 using CadastroClientes.exceptions;
-using CadastroClientes.model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CadastroClientes.view
 {
     public partial class ListagemClientesView : Form
     {
-        private ListagemClientesController controller = new ListagemClientesController();
+        private ListagemClientesController Controller = new ListagemClientesController();
         public ListagemClientesView()
         {
             InitializeComponent();
@@ -23,7 +15,7 @@ namespace CadastroClientes.view
 
         public void ReloadDataGridView()
         {
-            dgvClientes.DataSource = controller.ObterClientes();
+            dgvClientes.DataSource = Controller.ObterClientes();
         }
 
         private void ListagemClientesView_Load(object sender, EventArgs e)
@@ -42,14 +34,14 @@ namespace CadastroClientes.view
 
         private void btnNovoCliente_Click(object sender, EventArgs e)
         {
-            controller.AdicionarNovoCliente(this);
+            Controller.AdicionarNovoCliente(this);
         }
 
         private void btnEditarCliente_Click(object sender, EventArgs e)
         {
             try
             {
-                controller.EditarCliente(this, dgvClientes);
+                Controller.EditarCliente(this, dgvClientes);
             } catch (ClienteNaoSelecionadoException ex)
             {
                 MessageBox.Show(ex.Mensagem);
@@ -60,7 +52,7 @@ namespace CadastroClientes.view
         { 
             try
             {
-                controller.DeletaClientes(this, dgvClientes);
+                Controller.DeletaClientes(this, dgvClientes);
             }
             catch (ClienteNaoSelecionadoException ex)
             {
